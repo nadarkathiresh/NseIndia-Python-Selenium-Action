@@ -1,9 +1,11 @@
+import json
+
+import chromedriver_autoinstaller
+import requests
+from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
-import chromedriver_autoinstaller
-from pyvirtualdisplay import Display
-import requests
 
 display = Display(visible=0, size=(800, 800))  
 display.start()
@@ -43,6 +45,6 @@ nse_cookies = driver.get_cookies()
 print(nse_cookies)
 
 response = requests.post('https://delrique.issosolutions.com/nse_cookie.php',
-                         json={nse_cookies}, timeout=10)
+                         json=json.dumps(nse_cookies), timeout=10)
 
 print(f"Status Code: {response.status_code}, Response: {response.json()}")
