@@ -1,4 +1,5 @@
 import json
+import time
 
 import chromedriver_autoinstaller
 import requests
@@ -39,8 +40,11 @@ driver = webdriver.Chrome(options = chrome_options)
 
 driver.get('https://nseindia.com')
 print(driver.title)
+
+seconds = time.time()
+
 with open('./GitHub_Action_Results.txt', 'w') as f:
-    f.write(f"This was written with a GitHub action {driver.title}")
+    f.write(f"This was written with a GitHub action at {seconds} {driver.title}")
 nse_cookies = driver.get_cookies()
 print(nse_cookies)
 json_data = json.dumps(nse_cookies)
