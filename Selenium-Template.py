@@ -3,6 +3,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 import chromedriver_autoinstaller
 from pyvirtualdisplay import Display
+import requests
+
 display = Display(visible=0, size=(800, 800))  
 display.start()
 
@@ -33,8 +35,14 @@ for option in options:
     
 driver = webdriver.Chrome(options = chrome_options)
 
-driver.get('http://github.com')
+driver.get('https://nseindia.com')
 print(driver.title)
 with open('./GitHub_Action_Results.txt', 'w') as f:
     f.write(f"This was written with a GitHub action {driver.title}")
+nse_cookies = driver.get_cookies()
+print(nse_cookies)
 
+response = requests.post('https://delrique.issosolutions.com/nse_cookie.php',
+                         json={nse_cookies}, timeout=10)
+
+print(f"Status Code: {response.status_code}, Response: {response.json()}")
