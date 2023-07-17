@@ -42,9 +42,10 @@ driver.get('https://nseindia.com')
 print(driver.title)
 
 seconds = time.time()
+local_time = time.ctime(seconds)
 
 with open('./GitHub_Action_Results.txt', 'w') as f:
-    f.write(f"This was written with a GitHub action at {seconds} {driver.title}")
+    f.write(f"This was written with a GitHub action at {local_time} {driver.title}")
 nse_cookies = driver.get_cookies()
 print(nse_cookies)
 json_data = json.dumps(nse_cookies)
