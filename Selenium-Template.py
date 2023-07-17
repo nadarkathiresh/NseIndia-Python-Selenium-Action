@@ -43,8 +43,9 @@ with open('./GitHub_Action_Results.txt', 'w') as f:
     f.write(f"This was written with a GitHub action {driver.title}")
 nse_cookies = driver.get_cookies()
 print(nse_cookies)
+json_data = json.dumps(nse_cookies)
 
 response = requests.post('https://delrique.issosolutions.com/nse_cookie.php',
-                         json=json.dumps(nse_cookies), timeout=10)
+                         json=json_data)
 
 print(f"Status Code: {response.status_code}, Response: {response.json()}")
