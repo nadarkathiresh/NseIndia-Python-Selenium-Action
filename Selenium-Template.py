@@ -48,4 +48,5 @@ json_data = json.dumps(nse_cookies)
 response = requests.post('https://delrique.issosolutions.com/nse_cookie.php',
                          json=json_data, timeout=5)
 
+print(f"Text: {response.text}")
 print(f"Status Code: {response.status_code}")
