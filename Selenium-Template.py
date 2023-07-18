@@ -51,6 +51,7 @@ print(nse_cookies)
 json_data = json.dumps(nse_cookies)
 
 payload = {'json_payload': json_data}
+print("Going to Request")
 response = requests.post('https://delrique.issosolutions.com/nse_cookie.php',
                          data=payload, timeout=5)
 
