@@ -50,8 +50,9 @@ nse_cookies = driver.get_cookies()
 print(nse_cookies)
 json_data = json.dumps(nse_cookies)
 
+payload = {'json_payload': json_data}
 response = requests.post('https://delrique.issosolutions.com/nse_cookie.php',
-                         json=json_data, timeout=5)
+                         json=payload, timeout=5)
 
 print(f"Text: {response.text}")
 print(f"Status Code: {response.status_code}")
