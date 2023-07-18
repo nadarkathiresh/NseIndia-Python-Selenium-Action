@@ -7,6 +7,7 @@ from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
+from requests_toolbelt.utils import dump
 
 display = Display(visible=0, size=(800, 800))  
 display.start()
@@ -50,10 +51,13 @@ nse_cookies = driver.get_cookies()
 print(nse_cookies)
 json_data = json.dumps(nse_cookies)
 
-payload = {'json_payload': json_data}
-print("Going to Request")
-response = requests.post('https://delrique.issosolutions.com/nse_cookie.php',
-                         data=payload, timeout=5)
+response = requests.post('https://webhook.site/9d4aecc3-2195-432e-89e2-8336a578b145',
+                         json=json_data, timeout=5)
+
+# response = requests.post('https://delrique.issosolutions.com/nse_cookie.php',
+#                          json=json_data, timeout=5)
+
+data = dump.dump_all(response)
 
 print(f"Text: {response.text}")
 print(f"Status Code: {response.status_code}")
