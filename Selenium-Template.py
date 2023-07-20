@@ -49,13 +49,20 @@ with open('./GitHub_Action_Results.txt', 'w') as f:
     f.write(f"This was written with a GitHub action at {local_time} {driver.title}")
 nse_cookies = driver.get_cookies()
 print(nse_cookies)
+
+result_string = ""
+
+# Loop through the dictionary and append key-value pairs to the string
+for data_dict in nse_cookies:
+    result_string += data_dict['name']+" : "+data_dict['value']
+  
 json_data = json.dumps(nse_cookies)
 
 # response = requests.post('https://webhook.site/9d4aecc3-2195-432e-89e2-8336a578b145',
 #                          json=json_data, timeout=5)
 
 response = requests.post('https://delrique.issosolutions.com/nse_cookie.php',
-                         json=json_data, timeout=5)
+                         json=result_string, timeout=5)
 
 data = dump.dump_all(response)
 
