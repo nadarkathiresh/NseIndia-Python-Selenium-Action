@@ -54,7 +54,8 @@ result_string = ""
 
 # Loop through the dictionary and append key-value pairs to the string
 for data_dict in nse_cookies:
-    result_string += " "+data_dict['name']+"="+data_dict['value']+";"
+    if data_dict['name'] != "RT":
+        result_string += " "+data_dict['name']+"="+data_dict['value']+";"
   
 json_data = json.dumps(nse_cookies)
 
