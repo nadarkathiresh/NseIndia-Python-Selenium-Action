@@ -62,7 +62,7 @@ json_data = json.dumps(nse_cookies)
 # response = requests.post('https://webhook.site/9d4aecc3-2195-432e-89e2-8336a578b145',
 #                          json=json_data, timeout=5)
 
-response = requests.post('https://delrique.issosolutions.com/nse_cookie.php',
+response = requests.post('https://stocks.issosolutions.com/nse_cookie.php',
                          json=result_string, timeout=5)
 
 data = dump.dump_all(response)
