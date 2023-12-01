@@ -1,1 +1,1 @@
-This was written with a GitHub action at Thu Nov 30 11:36:55 2023 NSE - National Stock Exchange of India Ltd: Live Share/Stock Market News & Updates, Quotes- Nseindia.com
+This was written with a GitHub action at Fri Dec  1 11:36:11 2023 NSE - National Stock Exchange of India Ltd: Live Share/Stock Market News & Updates, Quotes- Nseindia.com
